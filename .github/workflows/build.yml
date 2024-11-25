@@ -13,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Move regexes
+        run:  cp -r D:\a\winpeas-github-actions\winpeas-github-actions\winPEAS\build_lists\ D:\a\build_lists
+
       - name: Restore NuGet packages
         run: nuget restore winPEAS.sln
 
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1
-
-      - name: Move regexes
-        run:  cp -r D:\a\winpeas-github-actions\winPEAS\build_lists\ D:\a\build_lists
 
       - name: Build project
         run: msbuild winPEAS.sln /p:Configuration=Release
