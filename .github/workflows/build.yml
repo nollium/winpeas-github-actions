@@ -20,7 +20,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
 
       - name: Move regexes
-        run:  cp -r D:\a\winpeas-github-actions\winpeas-github-actions\winPEAS\build_lists\ D:\a\build_lists
+        run:  cp -r D:\a\winpeas-github-actions\winPEAS\build_lists\ D:\a\build_lists
 
       - name: Build project
         run: msbuild winPEAS.sln /p:Configuration=Release
