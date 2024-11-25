@@ -15,14 +15,15 @@ jobs:
 
       - name: Validate build_lists existence
         run: |
-          if (Test-Path ./winPEAS/build_lists) {
+          if (Test-Path ./build_lists) {
             Write-Host "Path exists"
           } else {
-            Write-Error "Path './winPEAS/build_lists' does not exist"
+            Write-Error "Path './build_lists' does not exist"
           }
 
-      - name: Move regexes
-        run: cp -r ./winPEAS/build_lists/ ./build_lists/
+      - name: Move build_lists
+        run: |
+          Copy-Item -Path ./build_lists -Destination D:/a/build_lists -Recurse -Force
 
       - name: Restore NuGet packages
         run: nuget restore winPEAS.sln
