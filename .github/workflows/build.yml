@@ -35,7 +35,8 @@ jobs:
         run: msbuild winPEAS.sln /p:Configuration=Release
 
       - name: List build output
-        run: dir winPEAS\obj\Release /S
+        run: |
+          Get-ChildItem -Path winPEAS\obj\Release -Recurse
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
