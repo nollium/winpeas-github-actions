@@ -16,11 +16,6 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore winPEAS.sln
 
-      - name: Ensure regexes.yaml file
-        run: |
-          mkdir -p build_lists
-          echo "default_content" > build_lists/regexes.yaml # Replace this with actual content or ensure the file exists
-
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v1
 
