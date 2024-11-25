@@ -33,3 +33,9 @@ jobs:
 
       - name: Build project
         run: msbuild winPEAS.sln /p:Configuration=Release
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: winPEAS-output
+          path: binaries/Release/
