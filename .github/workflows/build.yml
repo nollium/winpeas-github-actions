@@ -13,8 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Validate build_lists existence
+        run: |
+          if (Test-Path ./winPEAS/build_lists) {
+            Write-Host "Path exists"
+          } else {
+            Write-Error "Path './winPEAS/build_lists' does not exist"
+          }
+
       - name: Move regexes
-        run:  cp -r D:\a\winpeas-github-actions\winpeas-github-actions\winPEAS\build_lists\ D:\a\build_lists
+        run: cp -r ./winPEAS/build_lists/ ./build_lists/
 
       - name: Restore NuGet packages
         run: nuget restore winPEAS.sln
